@@ -28,11 +28,13 @@ class TestConcoctParams(object):
                                    total_percentage_pca = 80,
                                    length_threshold = 100,
                                    covariance_type = 'full',
+                                   basename = '/home/tmp_result/',
                                    )
         assert_equal(except_k_p.args(), self.base_args +
                      ['--total_percentage_pca', '80',
                       '--length_threshold', '100',
-                      '--covariance_type', 'full'])
+                      '--covariance_type', 'full',
+                      '--basename', '/home/tmp_result/'])
 
 
         only_cov_p = ConcoctParams(self.comp,
@@ -47,6 +49,7 @@ class TestConcoctParams(object):
                                total_percentage_pca= 80,
                                length_threshold = 100,
                                covariance_type = 'full',
+                               basename = '/home/tmp_result/'
                                )
 
         assert_equal(all_p.args(),
@@ -54,7 +57,8 @@ class TestConcoctParams(object):
                      ['--kmer_length', '4',
                       '--total_percentage_pca', '80',
                       '--length_threshold', '100',
-                      '--covariance_type', 'full'])
+                      '--covariance_type', 'full',
+                      '--basename', '/home/tmp_result/'])
 
 
 
