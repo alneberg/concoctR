@@ -59,14 +59,14 @@ class ConcoctR(object):
                 cla = ['concoct'] + concoct_params.args()
                 subprocess.Popen(cla)
                 self.log.info("Command line call with command: {0}".format(cla))
-
-            return None
-
-   def generate_sbatch_script(self, concoct_params, sbatch_params, file_name):
+                
+        return None
+    
+    def generate_sbatch_script(self, concoct_params, sbatch_params, file_name):
        """ Generate a shell script that can be submitted with sbatch. """
        with open(file_name, 'w+') as f:
            f.write("#!/bin/bash" + '\n')
-           for sp in sbatch_param:
+           for sp in sbatch_params:
                f.write("#SBATCH " + sp + '\n')
            command = " ".join(['concoct'] + concoct_params.args())
            f.write(command + '\n')
