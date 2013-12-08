@@ -60,7 +60,7 @@ class ConcoctR(object):
                 subprocess.Popen(cla)
                 self.log.info("Command line call with command: {0}".format(cla))
                 
-        return None
+            return None
     
     def generate_sbatch_script(self, concoct_params, sbatch_params, file_name):
        """ Generate a shell script that can be submitted with sbatch. """
