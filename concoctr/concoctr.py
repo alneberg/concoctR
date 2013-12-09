@@ -18,6 +18,7 @@ class ConcoctParams(object):
         self.length_threshold = length_threshold
         self.covariance_type = covariance_type
         self.basename = basename
+        self.max_n_processors = 1
 
     @property
     def options(self):
@@ -28,7 +29,8 @@ class ConcoctParams(object):
                 ('--total_percentage_pca', self.total_percentage_pca),
                 ('--length_threshold', self.length_threshold),
                 ('--covariance_type', self.covariance_type),
-                ('--basename', self.basename)])
+                ('--basename', self.basename),
+                ('-m', self.max_n_processors)])
 
     def args(self):
         cmd_l = []
