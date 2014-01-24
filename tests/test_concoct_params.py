@@ -14,7 +14,8 @@ class TestConcoctParams(object):
     def setup(self):
         self.comp = "mock_comp"
         self.cov = "mock_coverage"
-        self.base_args = ['--composition_file',"mock_comp","--coverage_file", "mock_coverage"]
+        self.base_args = ['--composition_file',"mock_comp",
+                          "--coverage_file", "mock_coverage"]
 
     def test_expand(self):
         empty_p = ConcoctParams(self.comp, self.cov)

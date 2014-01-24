@@ -4,13 +4,18 @@ from collections import OrderedDict
 from logbook import Logger
 
 class ConcoctParams(object):
+    """ Class that represents concoct arguments used as input to
+    the concoctR class. Any missing argument will not be used when
+    the program is called and will this have its default value """
     def __init__(self, composition_file=None,
                  coverage_file=None,
                  kmer_length=None, 
                  total_percentage_pca=None, 
                  length_threshold=None, 
                  covariance_type=None,
-                 basename=None):
+                 basename=None,
+                 max_n_processors=None,
+                 clusters=None):
         self.composition_file = composition_file
         self.coverage_file = coverage_file
         self.kmer_length = kmer_length
@@ -18,7 +23,8 @@ class ConcoctParams(object):
         self.length_threshold = length_threshold
         self.covariance_type = covariance_type
         self.basename = basename
-        self.max_n_processors = 1
+        self.max_n_processors = max_n_processors
+        self.clusters = clusters
 
     @property
     def options(self):
@@ -30,7 +36,8 @@ class ConcoctParams(object):
                 ('--length_threshold', self.length_threshold),
                 ('--covariance_type', self.covariance_type),
                 ('--basename', self.basename),
-                ('-m', self.max_n_processors)])
+                ('-m', self.max_n_processors),
+                ('--clusters', self.clusters)])
 
     def args(self):
         cmd_l = []
@@ -41,6 +48,8 @@ class ConcoctParams(object):
         return cmd_l
 
 class ConcoctR(object):
+    """ A class for running concoct from within python. Uses the
+    concoctParams class for representing input parameters. """
     
     def __init__(self):
         self.log = Logger('ConcoctR')
